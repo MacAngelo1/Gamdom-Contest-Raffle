@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#091319">
+  <title>Gamdom Community Raffle</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <header>
+      <img class="logo" src="logo.png" alt="Gamdom">
+      <div class="eyebrow">Contest raffle</div>
+      <h1>One draw. One winner.</h1>
+    </header>
+
+    <div class="overview">
+      <span id="status" class="badge">Entries open</span>
+      <span class="muted"><strong id="count">0</strong> entries</span>
+    </div>
+
+    <section class="card">
+      <h2>Add a participant</h2>
+      <p id="formHint" class="muted">
+        One entry per Gamdom ID and X handle.
+      </p>
+
+      <form id="entryForm">
+        <label for="gamdomId">Gamdom ID</label>
+        <input
+          id="gamdomId"
+          name="gamdomId"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]+"
+          maxlength="30"
+          placeholder="48239989"
+          autocomplete="off"
+          required
+        >
+
+        <label for="handle">X (Twitter) handle</label>
+        <input
+          id="handle"
+          name="handle"
+          type="text"
+          maxlength="16"
+          placeholder="@username"
+          autocomplete="off"
+          autocapitalize="none"
+          spellcheck="false"
+          required
+        >
+
+        <button id="addButton" class="submit" type="submit">
+          Add entry
+        </button>
+      </form>
+    </section>
+
+    <div id="message" role="status" aria-live="polite"></div>
+
+    <section id="winnerCard" class="card winner" hidden>
+      <div class="trophy" aria-hidden="true">🏆</div>
+      <div class="eyebrow">Raffle winner</div>
+      <h2 id="winnerHandle"></h2>
+      <p id="winnerId"></p>
+      <p id="winnerDate" class="muted"></p>
+    </section>
+
+    <section class="card">
+      <h2>Raffle controls</h2>
+      <p id="controlHint" class="muted">
+        Close entries when everyone has been added.
+      </p>
+
+      <div class="actions">
+        <button id="closeButton" class="secondary" type="button">
+          Close raffle
+        </button>
+
+        <button id="drawButton" type="button" hidden>
+          Draw winner
+        </button>
+
+        <button id="backupButton" class="secondary" type="button">
+          Download backup
+        </button>
+
+        <button id="resetButton" class="danger" type="button">
+          Start new raffle
+        </button>
+      </div>
+    </section>
+
+    <details class="card">
+      <summary>View entries (<span id="listCount">0</span>)</summary>
+      <p id="emptyMessage" class="muted">No entries yet.</p>
+      <ul id="entries"></ul>
+    </details>
+
+    <footer>
+      Saved in this browser on this device.<br>
+      Community raffle tool · Not an official Gamdom product.
+    </footer>
+  </main>
+</body>
+</html>
