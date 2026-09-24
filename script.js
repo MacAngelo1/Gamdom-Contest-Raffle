@@ -181,9 +181,11 @@ function render() {
   $("handle").disabled = locked;
   $("addButton").disabled = locked;
 
+  if ($("formHint")) {
   $("formHint").textContent = state.closed
     ? "Entries are closed for this raffle."
     : "One entry per Gamdom ID and X handle.";
+}
 
   $("closeButton").hidden = state.closed;
   $("closeButton").disabled =
@@ -203,11 +205,13 @@ function render() {
   $("resetButton").disabled =
     !storageReady || creatingImage;
 
+ if ($("controlHint")) {
   $("controlHint").textContent = winner
     ? "The winner is saved. Download the winner image or start a new raffle."
     : state.closed
       ? "Entries are locked. You can now pick the winner."
       : "Close entries when everyone has been added.";
+}
 
   $("winnerCard").hidden = !winner;
 
